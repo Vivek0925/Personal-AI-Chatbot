@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="background">
+        <div class="stars"></div>
+        <div class="glow"></div>
+        <div class="outer-ring"></div>
+        <div class="planet"></div>
+        <div class="container0">
+          <div class="logo-container">
+            <!-- <img width="300" src="ailogo.png" alt="PAI Encrypt Logo" class="logo" /> -->
+          </div>
+
+          <div class="container">
+            <div class="curved-shape"></div>
+            <div class="curved-shape2"></div>
+            <div class="form-box login">
+              <h2 class="animation" style="--D: 0; --S: 21">Login</h2>
+              <form action="#">
+                <div class="input-box animation" style="--D: 1; --S: 22">
+                  <input type="text"  />
+                  <label for="">Username</label>
+                  <i class="ri-user-fill"></i>
+                </div>
+                <div class="input-box animation" style="--D: 2; --S: 23">
+                  <input type="password" id="password" />
+                  <label for="">Password</label>
+                  <i class="ri-eye-off-fill" id="togglePassword"></i>
+                </div>
+                <div class="input-box animation" style="--D: 3; --S: 24">
+                  <button class="btn" type="submit">Login</button>
+                </div>
+                <div class="input-box animation" style="--D: 4; --S: 25">
+                  <button class="Gbtn" type="submit">
+                    <img src="google.png" alt="" />Continue with Google
+                  </button>
+                </div>
+                <div class="regi-link animation" style="--D: 5; --S: 26">
+                  <p>
+                    Don't have an account ?
+                    <a href="#" class="SingUpLink">Sign Up</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div class="info-content login">
+              <h2 class="animation size" style="--li: 17; --S: 20">
+                Welcome Back!!
+              </h2>
+              <p class="animation" style="--D: 1; --S: 21">
+                We are glad to see you again
+              </p>
+            </div>
+            <div class="form-box Register">
+              <h2 class="animation size" style="--li: 18; --S: 0">Register</h2>
+              <form action="#">
+                <div class="input-box animation" style="--li: 19; --S: 1">
+                  <input type="text" />
+                  <label for="">Username</label>
+                  <i class="ri-user-fill"></i>
+                </div>
+                <div class="input-box animation" style="--li: 20; --S: 2">
+                  <input type="password" id="password" />
+                  <label for="">Password</label>
+                  <i class="ri-eye-off-fill" id="togglePassword"></i>
+                </div>
+                <div class="input-box animation" style="--li: 21; --S: 3">
+                  <button class="btn" type="submit">Register</button>
+                </div>
+                <div class="input-box animation" style="--li: 22; --S: 4">
+                  <button class="Gbtn" type="submit">
+                    <img src="google.png" alt="" />Sign up with Google
+                  </button>
+                </div>
+                <div class="regi-link animation" style="--li: 23; --S: 5">
+                  <p>
+                    Don't have an account ?
+                    <a href="#" class="SingInLink">Register</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div class="info-content Register">
+              <h2 class="animation size" style="--li: 17; --S: 0">Welcome!!</h2>
+              <p class="animation" style="--li: 18; --S: 1">Glad to see you</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="login.js"></script>
+  </body>
+</html>
