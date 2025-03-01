@@ -22,7 +22,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
-    (accesToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile, done) => {
       return done(null, profile);
     }
   )
@@ -41,7 +41,9 @@ app.get('/', (req, res) => {
 
 app.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', {
+    scope: ['profile', 'email', 'https://www.googleapis.com/auth/drive.file'],
+  })
 );
 
 app.get(
@@ -51,6 +53,15 @@ app.get(
     res.render('home', { name: req.user.displayName });
   }
 );
+
+app.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+});
 
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
