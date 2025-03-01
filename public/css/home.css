@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: monospace;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #0f0f0f; /* Dark background */
+  background-size: 30px 30px; /* Adjust dot spacing */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 5%,
+    transparent 5%
+  );
+}
+
+.flexrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  height: 35%;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#typing-text {
+  font-size: 2em;
+  font-family: j;
+}
+
+#chatbot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+}
+
+.icons {
+  height: 43px;
+  width: 43px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.footer {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.fileupload {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.send {
+  cursor: pointer;
+}
+
+.search {
+  width: 80%;
+  max-width: 600px;
+  background-color: rgb(25, 25, 25);
+  border: 1px groove rgb(64, 64, 64);
+  border-radius: 40px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  height: 2.5rem;
+  width: 80%;
+  background-color: #272626;
+  border-radius: 40px;
+  border: none;
+  color: white;
+  border: 1px dashed grey;
+  font-size: 16px;
+  outline: none;
+  padding: 0 10px;
+}
+
+.send img {
+  width: 58px;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  #chatbot {
+    margin-left: 5%;
+    font-size: 20px;
+  }
+
+  .search {
+    width: 90%;
+  }
+
+  .icons {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    height: 30%;
+  }
+
+  #chatbot {
+    font-size: 16px;
+  }
+
+  .search {
+    width: 95%;
+    padding: 8px 12px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  .icons {
+    height: 24px;
+    width: 24px;
+  }
+
+  .footer {
+    margin-bottom: 10px;
+  }
+}

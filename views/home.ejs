@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal AI</title>
-</head>
-<body>
-  <h1>Hello <%=name%>, Welcome to Personal AI</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal AI</title>
+    <link rel="icon" type="image/png" href="logo2.png" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="flexrow">
+        <img src="/icons/logo.png" class="icons" alt="Logo" />
+        <img src="/icons/profile.png" class="icons" alt="Profile" id="login" />
+      </div>
+      <div id="chatbot" class="flexrow">
+        <p id="typing-text"></p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="flexrow search">
+        <form enctype="multipart/form-data">
+          <input type="file" id="fileInput" multiple style="display: none" />
+          <label for="fileInput" class="fileupload">
+            <img src="/icons/upload.png" class="icons" alt="Upload Icon" />
+          </label>
+        </form>
+        <input type="text" placeholder="What do you want !" />
+        <div class="send">
+          <img src="/icons/send.png" />
+        </div>
+      </div>
+    </div>
+    <script src="/js/home.js"></script>
+  </body>
 </html>
