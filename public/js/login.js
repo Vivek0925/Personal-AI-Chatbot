@@ -1,7 +1,6 @@
 const loginLink = document.getElementById('loginLink');
 const signupLink = document.getElementById('signupLink');
 const imageContainer = document.getElementById('imageContainer');
-const googleButton = document.getElementById('google');
 
 if (loginLink) {
   loginLink.addEventListener('click', (e) => {
@@ -23,8 +22,7 @@ if (signupLink) {
   });
 }
 
-if (googleButton) {
-  googleButton.addEventListener('click', () => {
-    window.location.href = 'http://localhost:3000/auth/google';
-  });
-}
+//Loign call
+document.getElementById('google').addEventListener('click', () => {
+  window.location.href = 'http://localhost:3000/auth/google';
+});

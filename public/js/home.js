@@ -1,13 +1,14 @@
-const text = 'Welcome to your Personal Assistant !';
+const typingText = document.getElementById('typing-text');
+const text = typingText.getAttribute('data-text');
 let index = 0;
 
 function typeLetter() {
   if (index < text.length) {
-    document.getElementById('typing-text').innerHTML += text.charAt(index);
+    typingText.innerHTML = text.substring(0, index + 1);
     index++;
-  } else {
-    clearInterval(typingInterval); 
+    setTimeout(() => requestAnimationFrame(typeLetter), 80);
   }
 }
 
-const typingInterval = setInterval(typeLetter, 80); 
+typingText.innerHTML = '';
+requestAnimationFrame(typeLetter);

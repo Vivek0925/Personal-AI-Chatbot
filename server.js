@@ -7,14 +7,23 @@ require('dotenv').config();
 
 const app = express();
 
+// Set up EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, '/public')));
-app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Passport.js setup
 passport.use(
   new GoogleStrategy(
     {
@@ -31,12 +40,17 @@ passport.use(
 passport.serializeUser((user, done) => {
   done(null, user);
 });
+
 passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
+// Routes
 app.get('/', (req, res) => {
-  res.render('home.ejs');
+  if (!req.isAuthenticated()) {
+    return res.sendFile(path.join(__dirname, 'public/html/root.html'));
+  }
+  res.render('home', { user: req.user });
 });
 
 app.get(
@@ -50,23 +64,16 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.render('home.ejs', { name: req.user.displayName });
+    res.redirect('/home'); 
   }
 );
 
 app.get('/home', (req, res) => {
-  res.render('home.ejs', { user: user.name });
+  if (!req.isAuthenticated()) return res.redirect('/');
+  res.render('home', { user: req.user });
 });
 
-app.get('/logout', (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/');
-  });
-});
-
+// Start server
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
