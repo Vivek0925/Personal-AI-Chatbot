@@ -36,7 +36,7 @@ passport.deserializeUser((obj, done) => {
 });
 
 app.get('/', (req, res) => {
-  res.render("home.ejs");
+  res.render('home.ejs');
 });
 
 app.get(
@@ -50,9 +50,13 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.render('home.html', { name: req.user.displayName });
+    res.render('home.ejs', { name: req.user.displayName });
   }
 );
+
+app.get('/home', (req, res) => {
+  res.render('home.ejs', { user: user.name });
+});
 
 app.get('/logout', (req, res) => {
   req.logout((err) => {

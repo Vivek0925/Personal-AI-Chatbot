@@ -1,64 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Login to your account" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to your account">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/css/home.css" />
-  </head>
-  <body>
-    <!-- Background iframe replaced with cleaner solution -->
+    <link rel="stylesheet" href="../css/loign.css">
+</head>
+<body>
     <div class="background"></div>
-
     <main class="container">
-      <form class="login-form" action="#" method="POST">
-        <h1>Welcome Back 👋</h1>
-        <p>A brand new day is here. It's your day to shape.</p>
-
-        <div class="input-group">
-          <label for="email" class="visually-hidden">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            required
-          />
+        <form class="login-form" action="#" method="POST">
+            <h1>Welcome Back 👋</h1>
+            <p>A brand new day is here. It's your day to shape.</p>
+            <div class="input-group">
+                <label for="email" class="visually-hidden">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <label for="password" class="visually-hidden">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="social-login login-btn">Sign in</button>
+            <div class="separator" aria-hidden="true">
+                <span>or</span>
+            </div>
+            <div class="social-login">
+                <button type="button" class="social-btn" id="google">
+                    <img src="../icons/google.png" alt="Google logo" width="20" height="20">
+                    Sign in with Google
+                </button>
+            </div>
+            <p class="signup">
+                Don't have an account? <a href="signup.html" id="signupLink">Sign up</a>
+            </p>
+        </form>
+        <div class="img-container" id="imageContainer">
+            <img src="../icons/imgbg.jpg" alt="Login page illustration" loading="lazy">
         </div>
-
-        <div class="input-group">
-          <label for="password" class="visually-hidden">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-
-        <button type="submit" class="social-login login-btn">Sign in</button>
-
-        <div class="separator" aria-hidden="true">
-          <span>or</span>
-        </div>
-
-        <div class="social-login">
-          <button type="button" class="social-btn">
-            <img src="google.png" alt="Google logo" width="20" height="20" />
-            Sign in with Google
-          </button>
-        </div>
-
-        <p class="signup">
-          Don't have an account? <a href="signup.html">Sign up</a>
-        </p>
-      </form>
-
-      <div class="img-container">
-        <img src="imgbg.jpg" alt="Login page illustration" loading="lazy" />
-      </div>
     </main>
-  </body>
+    <script src="../js/login.js"></script>
+</body>
 </html>

@@ -55,6 +55,7 @@ body {
   cursor: pointer;
 }
 
+
 .footer {
   height: 10%;
   width: 100%;
@@ -74,9 +75,6 @@ input[type='file'] {
   cursor: pointer;
 }
 
-.send {
-  cursor: pointer;
-}
 
 .search {
   width: 80%;
@@ -104,6 +102,7 @@ input {
 
 .send img {
   width: 58px;
+  cursor: pointer;
 }
 
 /* Media Queries for Responsiveness */
