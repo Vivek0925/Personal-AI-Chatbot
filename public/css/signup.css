@@ -11,14 +11,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensures full-page height */
+  min-height: 100vh;
   margin: 0;
   padding: 20px;
-  
-  /* Dark background with dotted effect */
+
   background-color: #0f0f0f;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 5%, transparent 5%);
-  background-size: 30px 30px; /* Adjust dot spacing */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 5%,
+    transparent 5%
+  );
+  background-size: 30px 30px;
 }
 
 /* Background replacement for iframe */
@@ -31,11 +33,11 @@ body {
   z-index: -1;
 }
 
-/* Main container */
 .container {
   display: flex;
+  justify-content: space-between;
   max-width: 700px;
-  max-height:450px ;
+  max-height: 450px;
   width: 100%;
   background: #fff;
   border-radius: 12px;
@@ -43,7 +45,6 @@ body {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Image container - left side */
 .img-container {
   display: flex;
   align-items: center;
@@ -52,18 +53,14 @@ body {
 }
 
 .img-container img {
- height: 500px;
+  height: 500px;
   object-fit: cover;
   max-width: 360px;
 }
 
 /* Signup card container - right side */
 .signup-card {
-  flex: 0 0 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
+  width: 50%;
 }
 
 /* Center content with even spacing */
@@ -75,6 +72,18 @@ body {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+}
+
+.user {
+  height: 30px;
+  width: 110px;
+  color: #abf9c1;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #3b5442;
+  border-radius: 10px;
+  outline: none;
+  border: none;
 }
 
 /* Typography */
@@ -124,8 +133,7 @@ h3 {
 }
 
 .login-link a {
-  color: #164a28;
-  text-decoration: none;
+  color: #3275fd;
   font-weight: bold;
   transition: text-decoration 0.2s;
 }
@@ -172,8 +180,12 @@ h3 {
 
 /* Entrance animation (from right) */
 @keyframes slideInFromRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .img-container.enter-from-right {
@@ -194,16 +206,16 @@ h3 {
     height: auto;
     max-width: 450px;
   }
-  
+
   .img-container {
     flex: 0 0 180px;
   }
-  
+
   .signup-card {
     flex: 0 0 auto;
     padding: 30px 20px;
   }
-  
+
   .signup-content {
     height: auto;
     gap: 20px;
@@ -214,7 +226,7 @@ h3 {
   .img-container {
     flex: 0 0 150px;
   }
-  
+
   .signup-content {
     gap: 15px;
   }
