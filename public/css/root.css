@@ -9,6 +9,7 @@ body {
   margin: 0;
   font-family: monospace;
   color: white;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,23 +47,21 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
-  padding-top:10vh;
+  padding-top: 10vh;
   font-size: 24px;
 }
 
 .icons {
-  height: 43px;
-  width: 43px;
-  object-fit: contain;
+  width: 50px;
   cursor: pointer;
 }
 
 .bottom {
-  height: 80vh;
+  height: 75vh;
   width: 55vw;
   margin-left: 22.5vw;
   /* border: 1px dashed grey; */
-   /* background-color: #0f0f0f;
+  /* background-color: #0f0f0f;
  background-size: 30px 30px;
   background-image: radial-gradient(
     rgba(144, 120, 120, 0.2) 5%,
@@ -71,13 +70,13 @@ body {
 }
 
 .footer {
-  height: 10%;
+  height: 5vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5vh;
 }
 
 input[type='file'] {
@@ -95,27 +94,22 @@ input[type='file'] {
   background-color: rgb(25, 25, 25);
   border: 1px groove rgb(64, 64, 64);
   border-radius: 40px;
-  padding: 10px 15px;
+  padding: 10px;
   display: flex;
   align-items: center;
 }
 
 input {
-  height: 2.5rem;
+  height: 3.5rem;
   width: 80%;
-  background-color: #272626;
+  background-color: #1c1c1c;
   border-radius: 40px;
   border: none;
   color: white;
-  border: 1px dashed grey;
+  border: 1px dashed rgb(73, 73, 73);
   font-size: 16px;
   outline: none;
-  padding: 0 10px;
-}
-
-.send img {
-  width: 58px;
-  cursor: pointer;
+  padding: 10px 10px;
 }
 
 /* Media Queries for Responsiveness */
@@ -130,8 +124,8 @@ input {
   }
 
   .icons {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
   }
 }
 
@@ -144,21 +138,22 @@ input {
     font-size: 16px;
   }
 
-  .search {
+  /* .search {
     width: 95%;
     padding: 8px 12px;
-  }
+  } */
 
   input {
     font-size: 16px;
+    padding: 20px;
   }
 
   .icons {
-    height: 24px;
-    width: 24px;
+    height: 40px;
+    width: 40px;
   }
 
   .footer {
-    margin-bottom: 10px;
+    margin-bottom: 5vh;
   }
 }
