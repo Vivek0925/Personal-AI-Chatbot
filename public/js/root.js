@@ -1,3 +1,7 @@
+document.getElementById('signin-btn').addEventListener('click', () => {
+  window.location.href = "/html/login.html";
+});
+
 const text = 'Welcome to your Personal Assistant !';
 let index = 0;
 
@@ -6,7 +10,7 @@ function typeLetter() {
     document.getElementById('typing-text').innerHTML += text.charAt(index);
     index++;
   } else {
-    clearInterval(typingInterval); 
+    clearInterval(typingInterval);
   }
 }
 

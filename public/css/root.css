@@ -6,13 +6,7 @@
 
 body {
   height: 100vh;
-  margin: 0;
-  font-family: monospace;
-  color: white;
   overflow: hidden;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
   background-color: #0f0f0f;
   background-size: 30px 30px;
   background-image: radial-gradient(
@@ -21,138 +15,148 @@ body {
   );
 }
 
-.flexrow {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  margin: 1.5rem 1.5rem 1.5rem 1.5rem;
-}
-
-/* .header {
-  height: 35%;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} */
-
-#typing-text {
-  font-size: 2em;
-  font-family: 'Calibri';
-  user-select: none;
-}
-
-/* #chatbot {
+.header {
+  height: 6vh;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
-  padding-top: 10vh;
-  font-size: 24px;
-} */
-
-.icons {
-  width: 50px;
-  cursor: pointer;
+  justify-content: space-between;
+  padding: 0px 20px 0px 20px;
 }
 
-.bottom {
-  /* height: 10vh; */
-  max-width: 720px;
-  min-width: 380px;
-  margin: auto;
-  border: 1px dashed grey;
-  /* background-color: #0f0f0f;
- background-size: 30px 30px;
-  background-image: radial-gradient(
-    rgba(144, 120, 120, 0.2) 5%,
-    transparent 5%
-  ); */
+.icons {
+  height: 45px;
+  width: auto;
+}
+
+.signin-btn {
+  height: 40px;
+  width: 110px;
+  font-size: 16px;
+  color: #f2ddcc;
+  border-radius: 10px;
+  padding: 8px 12px;
+  background-color: #2b3247;
+  outline: none;
+  border: none;
+}
+
+.signin-icon {
+  color: #f2ddcc;
+  height: 24px;
+  width: auto;
+  padding: 4px;
 }
 
 #typing-text {
-  margin: 3em 2.5em 0em 2.5em;
+  color: aliceblue;
 }
 
-input[type='file'] {
-  display: none;
+.centre {
+  height: 84vh;
+  max-width: 680px;
+  min-width: 64px;
+  margin: auto;
 }
 
-.fileupload {
-  display: inline-block;
-  cursor: pointer;
+#typing-text {
+  font-size: 2rem;
+  padding: 10% 10%;
+}
+
+.footer {
+  height: 9vh;
+
+  margin: auto;
+  padding: 0px 20px 0px 20px;
+  /* border: 1px dashed red; */
 }
 
 .search {
-  width: 80%;
+  height: 75px;
   max-width: 744px;
-  min-width: 380px;
-  background-color: rgb(25, 25, 25);
-  border: 1px groove rgb(64, 64, 64);
+  min-width: 64px;
+  margin: auto;
   border-radius: 40px;
-  padding: 10px;
+  border: 1px groove rgb(64, 64, 64);
+  background-color: rgb(25, 25, 25);
   display: flex;
   align-items: center;
-  margin-top: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: space-around;
 }
 
 input {
-  height: 3.5rem;
-  width: 80%;
-  background-color: #1c1c1c;
-  border-radius: 40px;
-  border: none;
-  color: white;
-  border: 1px dashed rgb(73, 73, 73);
+  height: 65%;
+  width: 75%;
   font-size: 16px;
+  padding: 20px;
+  color: white;
+  cursor: pointer;
   outline: none;
-  /* padding: 20px 20px; */
+  border: none;
+  border-radius: 40px;
+  background-color: #1c1c1c;
+  border: 1px dashed rgb(73, 73, 73);
 }
 
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 768px) {
-  #chatbot {
-    margin-left: 5%;
-    font-size: 20px;
-  }
-
-  .search {
-    width: 90%;
-  }
-
-  .icons {
-    height: 40px;
-    width: 40px;
-  }
+.send {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
+.send img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
 @media screen and (max-width: 480px) {
+  body {
+    overflow-y: auto;
+  }
+
   .header {
-    height: 30%;
-  }
-
-  #chatbot {
-    font-size: 16px;
-  }
-
-  .search {
-    width: 95%;
-    /* padding: 8px 12px; */
-  }
-
-  input {
-    font-size: 16px;
-    padding: 20px;
+    height: 7vh;
+    padding: 0 10px;
   }
 
   .icons {
-    height: 40px;
-    width: 40px;
+    height: 30px;
   }
 
-  .footer {
-    margin-bottom: 5vh;
+  .signin-btn {
+    height: 30px;
+    width: 90px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  #typing-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .centre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+  }
+
+  .search {
+    height: 50px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .search input {
+    width: 65%;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .send img {
+    height: 35px;
   }
 }

@@ -111,6 +111,26 @@ input {
   padding: 10px 10px;
 }
 
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  text-decoration: none;
+}
+
+.logout-btn img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s;
+}
+
+.logout-btn img:hover {
+  transform: scale(1.1);
+}
+
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
   #chatbot {

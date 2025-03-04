@@ -1,3 +1,4 @@
+
 const loginLink = document.getElementById('loginLink');
 const signupLink = document.getElementById('signupLink');
 const imageContainer = document.getElementById('imageContainer');

@@ -10,14 +10,22 @@
   <body>
     <div class="flexrow">
       <img src="/icons/logo.png" class="icons" alt="Logo" />
-      <a href="/html/login.html">
+      <div class="profile-section">
         <img
           src="<%=user.photos[0].value %>"
           class="icons"
           alt="Profile"
           id="login"
         />
-      </a>
+        <a href="/logout" class="logout-btn">
+          <img
+            src="/icons/logout.png"
+            class="icons"
+            alt="Logout"
+            title="Logout"
+          />
+        </a>
+      </div>
     </div>
 
     <div class="bottom">

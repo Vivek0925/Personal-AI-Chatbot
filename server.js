@@ -74,6 +74,14 @@ app.get('/home', (req, res) => {
   res.render('home', { user: req.user });
 });
 
+app.get('/logout', (req, res) => {
+  console.log('User logged out:', req.user?.displayName || 'Anonymous');
+  req.logout((err) => {
+    if (err) console.error('Logout error:', err);
+    res.redirect('/');
+  });
+});
+
 // Start server
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
