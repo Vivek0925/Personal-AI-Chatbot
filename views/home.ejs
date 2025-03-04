@@ -4,63 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal AI</title>
-    <link rel="icon" type="image/png" href="/icons/logo.png" />
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="icon" type="image/png" href="../icons/logo.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/home.css" />
   </head>
   <body>
-    <div class="flexrow">
-      <img src="/icons/logo.png" class="icons" alt="Logo" />
-      <div class="profile-section">
-        <img
-          src="<%=user.photos[0].value %>"
-          class="icons"
-          alt="Profile"
-          id="login"
-        />
-        <a href="/logout" class="logout-btn">
-          <img
-            src="/icons/logout.png"
-            class="icons"
-            alt="Logout"
-            title="Logout"
-          />
+    <div class="header">
+      <div class="logo">
+        <a href="/html/root.html">
+          <img src="/icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
-    </div>
 
-    <div class="bottom">
-      <p id="typing-text"></p>
+      <button class="signin-btn" id="signin-btn">
+        Sign in
+        <i class="fa-regular fa-user signin-icon"></i>
+      </button>
+    </div>
+    <div class="centre">
+      <div
+        id="typing-text"
+        data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant"
+      ></div>
     </div>
 
     <div class="footer">
-      <div class="flexrow search">
-        <form enctype="multipart/form-data">
-          <input type="file" id="fileInput" multiple style="display: none" />
-          <label for="fileInput" class="fileupload">
-            <img src="/icons/upload.png" class="icons" alt="Upload Icon" />
-          </label>
-        </form>
-        <input type="text" placeholder="What do you want !" />
+      <form class="search" encoding="multipart/form-data">
+        <input type="file" id="file-input" hidden />
+        <label for="file-input" class="upload-label">
+          <img src="/icons/upload.png" class="icons" alt="Upload Iocn" />
+        </label>
 
-        <img src="/icons/send.png" class="icons" />
-      </div>
+        <input type="text" placeholder="What do you want!" />
+
+        <button class="send">
+          <img src="../icons/send.png" class="icons" alt="Send Icon" />
+        </button>
+      </form>
     </div>
-    <script>
-      // Get the user's display name from EJS
-      const userName = '<%= user.displayName %>';
-      // Construct the full text with proper spacing
-      const fullText = `Hello ${userName} Welcome to your Personal Assistant`;
-      let i = 0;
-      const speed = 80;
 
-      function textAnimate() {
-        if (i < fullText.length) {
-          document.getElementById('typing-text').textContent +=
-            fullText.charAt(i);
-          i++;
-          setTimeout(textAnimate, speed);
-        }
-      }
-    </script>
+    <script src="../js/home.js"></script>
   </body>
 </html>

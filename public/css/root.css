@@ -48,10 +48,6 @@ body {
   padding: 4px;
 }
 
-#typing-text {
-  color: aliceblue;
-}
-
 .centre {
   height: 84vh;
   max-width: 680px;
@@ -62,6 +58,7 @@ body {
 #typing-text {
   font-size: 2rem;
   padding: 10% 10%;
+  color: aliceblue;
 }
 
 .footer {
@@ -69,7 +66,6 @@ body {
 
   margin: auto;
   padding: 0px 20px 0px 20px;
-  /* border: 1px dashed red; */
 }
 
 .search {
@@ -113,7 +109,7 @@ input {
 }
 @media screen and (max-width: 480px) {
   body {
-    overflow-y: auto;
+    overflow:hidden;
   }
 
   .header {
