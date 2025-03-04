@@ -22,16 +22,18 @@
           <img src="/icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
-
-      <button class="signin-btn" id="signin-btn">
-        Sign in
-        <i class="fa-regular fa-user signin-icon"></i>
-      </button>
+      <div class="profile">
+        <img 
+          src="<%= user.photos && user.photos.length > 0 ? user.photos[0].value : (user.profile && user.profile.length > 0 ? user.profile[0].value : '/icons/default-profile.png') %>" 
+          alt="Profile picture"
+          title="<%= user.displayName %>"
+        />
+      </div>
     </div>
     <div class="centre">
       <div
         id="typing-text"
-        data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant"
+        data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant!"
       ></div>
     </div>
 
