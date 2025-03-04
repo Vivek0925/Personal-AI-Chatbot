@@ -8,23 +8,20 @@
     <link rel="stylesheet" href="/css/home.css" />
   </head>
   <body>
-    <div class="header">
-      <div class="flexrow">
-        <a href="/html/root.html">
-          <img src="/icons/logo.png" class="icons" alt="Logo" />
-        </a>
-        <a href="/html/login.html">
-          <img
-            src="/icons/profile.png"
-            class="icons"
-            alt="Profile"
-            id="login"
-          />
-        </a>
-      </div>
-      <div id="chatbot" class="flexrow">
-        <p id="typing-text" data-text="Hello, <%= user.displayName %>! "></p>
-      </div>
+    <div class="flexrow">
+      <img src="/icons/logo.png" class="icons" alt="Logo" />
+      <a href="/html/login.html">
+        <img
+          src="<%=user.photos[0].value %>"
+          class="icons"
+          alt="Profile"
+          id="login"
+        />
+      </a>
+    </div>
+
+    <div class="bottom">
+      <p id="typing-text"></p>
     </div>
 
     <div class="footer">
@@ -36,11 +33,26 @@
           </label>
         </form>
         <input type="text" placeholder="What do you want !" />
-        <div class="send">
-          <img src="/icons/send.png" />
-        </div>
+
+        <img src="/icons/send.png" class="icons" />
       </div>
     </div>
-    <script src="../js/home.js"></script>
+    <script>
+      // Get the user's display name from EJS
+      const userName = '<%= user.displayName %>';
+      // Construct the full text with proper spacing
+      const fullText = `Hello ${userName} Welcome to your Personal Assistant`;
+      let i = 0;
+      const speed = 80;
+
+      function textAnimate() {
+        if (i < fullText.length) {
+          document.getElementById('typing-text').textContent +=
+            fullText.charAt(i);
+          i++;
+          setTimeout(textAnimate, speed);
+        }
+      }
+    </script>
   </body>
 </html>

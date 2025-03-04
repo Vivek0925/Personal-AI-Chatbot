@@ -1,3 +1,14 @@
+// let i = 0;
+// let text = 'Welcome to personal AI!';
+// let speed = 80;
+// function textAnimate() {
+//   if (i < text.length) {
+//     document.getElementById('typing-text').innerHTML += text.charAt(i);
+//     i++;
+//     setTimeout(textAnimate, speed);
+//   }
+// }
+
 const typingText = document.getElementById('typing-text');
 const text = typingText.getAttribute('data-text');
 let index = 0;

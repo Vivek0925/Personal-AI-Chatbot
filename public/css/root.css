@@ -10,9 +10,9 @@ body {
   font-family: monospace;
   color: white;
   overflow: hidden;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
   background-color: #0f0f0f;
   background-size: 30px 30px;
   background-image: radial-gradient(
@@ -25,16 +25,16 @@ body {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  margin: 20px;
+  margin: 1.5rem 1.5rem 1.5rem 1.5rem;
 }
 
-.header {
+/* .header {
   height: 35%;
   padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+} */
 
 #typing-text {
   font-size: 2em;
@@ -42,14 +42,14 @@ body {
   user-select: none;
 }
 
-#chatbot {
+/* #chatbot {
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
   padding-top: 10vh;
   font-size: 24px;
-}
+} */
 
 .icons {
   width: 50px;
@@ -57,10 +57,11 @@ body {
 }
 
 .bottom {
-  height: 75vh;
-  width: 55vw;
-  margin-left: 22.5vw;
-  /* border: 1px dashed grey; */
+  /* height: 10vh; */
+  max-width: 720px;
+  min-width: 380px;
+  margin: auto;
+  border: 1px dashed grey;
   /* background-color: #0f0f0f;
  background-size: 30px 30px;
   background-image: radial-gradient(
@@ -69,14 +70,8 @@ body {
   ); */
 }
 
-.footer {
-  height: 5vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  margin-bottom: 5vh;
+#typing-text {
+  margin: 3em 2.5em 0em 2.5em;
 }
 
 input[type='file'] {
@@ -91,12 +86,16 @@ input[type='file'] {
 .search {
   width: 80%;
   max-width: 744px;
+  min-width: 380px;
   background-color: rgb(25, 25, 25);
   border: 1px groove rgb(64, 64, 64);
   border-radius: 40px;
   padding: 10px;
   display: flex;
   align-items: center;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
@@ -109,7 +108,7 @@ input {
   border: 1px dashed rgb(73, 73, 73);
   font-size: 16px;
   outline: none;
-  padding: 10px 10px;
+  /* padding: 20px 20px; */
 }
 
 /* Media Queries for Responsiveness */
@@ -138,10 +137,10 @@ input {
     font-size: 16px;
   }
 
-  /* .search {
+  .search {
     width: 95%;
-    padding: 8px 12px;
-  } */
+    /* padding: 8px 12px; */
+  }
 
   input {
     font-size: 16px;

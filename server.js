@@ -64,12 +64,13 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/home'); 
+    res.redirect('/home');
   }
 );
 
 app.get('/home', (req, res) => {
   if (!req.isAuthenticated()) return res.redirect('/');
+  console.log(req.user);
   res.render('home', { user: req.user });
 });
 
