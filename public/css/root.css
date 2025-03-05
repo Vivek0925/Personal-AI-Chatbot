@@ -34,6 +34,7 @@ body {
   width: 110px;
   font-size: 16px;
   color: #f2ddcc;
+  cursor: pointer;
   border-radius: 10px;
   padding: 8px 12px;
   background-color: #2b3247;
@@ -58,12 +59,11 @@ body {
 #typing-text {
   font-size: 2rem;
   padding: 10% 10%;
-  color: aliceblue;
+  color: #f2ddcc;
 }
 
 .footer {
   height: 9vh;
-
   margin: auto;
   padding: 0px 20px 0px 20px;
 }
@@ -80,6 +80,10 @@ body {
   align-items: center;
   justify-content: space-around;
 }
+.search:has(input:focus) {
+  border: 1px solid #6d6a73;
+  transition: border 0.4s ease;
+}
 
 input {
   height: 65%;
@@ -95,6 +99,9 @@ input {
   border: 1px dashed rgb(73, 73, 73);
 }
 
+.upload-label {
+  cursor: pointer;
+}
 .send {
   background: transparent;
   border: none;
@@ -103,13 +110,13 @@ input {
 }
 
 .send img {
-  height: 50px;
+  height: 48px;
   width: auto;
   display: block;
 }
 @media screen and (max-width: 480px) {
   body {
-    overflow:hidden;
+    overflow: hidden;
   }
 
   .header {

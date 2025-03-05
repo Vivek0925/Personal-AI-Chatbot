@@ -36,27 +36,29 @@ body {
   margin: auto;
 }
 .profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px; /* Adjust size */
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden; /* Ensures image stays within the circle */
-    border: 2px solid #ddd; /* Optional border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profile:hover {
+  opacity: 0.9;
 }
 
 .profile img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the circle properly */
-    border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 #typing-text {
   font-size: 2rem;
   padding: 10% 10%;
-  color: aliceblue;
+  color: #f2ddcc;
 }
 
 .footer {
@@ -78,14 +80,17 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-
+.search:has(input:focus) {
+  border: 1px solid #6d6a73;
+  transition: border 0.3s ease;
+}
 input {
   height: 65%;
   width: 78%;
   font-size: 16px;
   padding: 20px;
   color: white;
-  cursor: pointer;
+  cursor: text;
   outline: none;
   border: none;
   border-radius: 40px;
@@ -93,6 +98,9 @@ input {
   border: 1px dashed rgb(73, 73, 73);
 }
 
+.upload-label{
+  cursor: pointer;
+}
 .send {
   background: transparent;
   border: none;
