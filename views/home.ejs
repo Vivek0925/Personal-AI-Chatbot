@@ -24,7 +24,7 @@
       </div>
       <div class="profile">
         <img
-          src="<%= user.photos && user.photos.length > 0 ? user.photos[0].value : (user.profile && user.profile.length > 0 ? user.profile[0].value : '/icons/default-profile.png') %>"
+          src="<%= user.photos[0].value%>"
           alt="Profile picture"
           title="<%= user.displayName %>"
         />
@@ -41,7 +41,7 @@
 </a>    </div>
 
     <div class="footer">
-      <form class="search" encoding="multipart/form-data">
+      <form class="search" enctype="multipart/form-data">
         <input type="file" id="file-input" hidden />
         <label for="file-input" class="upload-label">
           <img src="/icons/upload.png" class="icons" alt="Upload Iocn" />
