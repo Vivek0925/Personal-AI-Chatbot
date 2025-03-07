@@ -73,7 +73,7 @@ app.get(
 
 app.get("/home", (req, res) => {
   if (!req.isAuthenticated()) return res.redirect("/");
-  console.log("User authenticated:", req.user.displayName);
+  console.log("User authenticated:", req.user);
  console.log(req.user.photos[0].value);
   res.render("home", { user: req.user });
 });

@@ -2,6 +2,8 @@ document.getElementById("signin-btn").addEventListener("click", () => {
   window.location.href = "/html/login.html";
 });
 
+
+//* Typing Animation
 const text = "Welcome to your Personal Assistant !";
 let index = 0;
 
@@ -13,9 +15,19 @@ function typeLetter() {
     clearInterval(typingInterval);
   }
 }
-
 const typingInterval = setInterval(typeLetter, 80);
 
+
+//Redirect to loign
 document.getElementById("search").addEventListener("click", () => {
-  window.location.href = "/html/login.html";
+  const searchInput = document.getElementById("search-input");
+  searchInput.placeholder = "Please log in first to continue";
+  searchInput.focus();
+  setTimeout(()=>{
+    window.location.href = "/html/login.html";
+  },1000);
 });
+
+
+
+

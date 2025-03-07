@@ -27,17 +27,17 @@
       </div>
       <div class="profile">
         <% if (user && user.photos && user.photos.length > 0) { %>
-        <img
-          src="<%= user.photos[0].value %>"
-          alt="Profile picture"
-          title="<%= user.displayName %>"
-        />
+          <img
+            src="<%= user.photos[0].value %>"
+            alt="Profile picture"
+            title="<%= user.displayName %>"
+          />
         <% } else { %>
-        <img
-          src="/icons/default-profile.png"
-          alt="Default profile picture"
-          title="<%= user ? user.displayName : 'User' %>"
-        />
+          <img
+            src="/icons/default-profile.png"
+            alt="Default profile picture"
+            title="<%= user ? user.displayName : 'User' %>"
+          />
         <% } %>
       </div>
     </div>

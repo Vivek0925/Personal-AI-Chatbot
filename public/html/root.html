@@ -14,8 +14,9 @@
       referrerpolicy="no-referrer"
     />
     <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/root.css" />
   </head>
   <body>
@@ -36,19 +37,15 @@
     </div>
 
     <div class="footer">
-      <form class="search" encoding="multipart/form-data" id="search">
-        
-        <input type="file" id="file-input" hidden />
+      <form class="search" enctype="multipart/form-data" id="search">
+        <input id="file-input" hidden />
         <label for="file-input" class="upload-label">
-          <!-- <img src="/icons/upload.png" class="icons" alt="Upload Iocn" /> -->
           <i class="ri-upload-2-line"></i>
-
         </label>
 
-        <input type="text" placeholder="What do you want!" />
+        <input type="text" id="search-input" placeholder="What do you want!" />
 
-        <button class="send" >
-          <!-- <img src="../icons/send.png" class="icons" alt="Send Icon" /> -->
+        <button type="button" class="send" id="send">
           <i class="ri-arrow-up-line"></i>
         </button>
       </form>
