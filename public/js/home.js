@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Chat Error:", error);
         // Remove typing indicator
         chatBox.removeChild(botTyping);
-        showMessage("Failed to get response. Please try again.", "bot");
+        showMessage("Let me first the backend bro!🚀", "bot");
       } finally {
         sendbtn.disabled = false;
       }

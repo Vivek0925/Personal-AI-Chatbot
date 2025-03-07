@@ -194,16 +194,15 @@ p {
 
 /* Sign up link */
 .signup {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: auto;
   position: static;
 }
 
 .signup a {
-  color: #164a28;
-  text-decoration: none;
+  color: #3275fd;
   font-weight: bold;
-  transition: text-decoration 0.3s;
+  transition: text-decoration 0.2s;
 }
 
 .signup a:hover {
@@ -277,3 +276,4 @@ p {
     padding: 30px 20px;
   }
 }
+
