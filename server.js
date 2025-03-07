@@ -1,21 +1,24 @@
-const express = require('express');
-const passport = require('passport');
-const session = require('express-session');
-const path = require('path');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-require('dotenv').config();
+const express = require("express");
+const passport = require("passport");
+const session = require("express-session");
+const path = require("path");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+require("dotenv").config();
+const multer = require("multer");
 
 const app = express();
+const upload = multer({ dest: "upload/" });
 
 // Set up EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json()); // For chat endpoint if you add it later
 app.use(
   session({
-    secret: 'secret',
+    secret: "secure",
     resave: false,
     saveUninitialized: true,
   })
@@ -46,43 +49,48 @@ passport.deserializeUser((obj, done) => {
 });
 
 // Routes
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   if (!req.isAuthenticated()) {
-    return res.sendFile(path.join(__dirname, 'public/html/root.html'));
+    return res.sendFile(path.join(__dirname, "public/html/root.html"));
   }
-  res.render('home', { user: req.user });
+  res.render("home", { user: req.user });
 });
 
 app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email', 'https://www.googleapis.com/auth/drive.file'],
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email", "https://www.googleapis.com/auth/drive.file"],
   })
 );
 
 app.get(
-  '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect('/home');
+    res.redirect("/home");
   }
 );
 
-app.get('/home', (req, res) => {
-  if (!req.isAuthenticated()) return res.redirect('/');
-  console.log(req.user);
-  res.render('home', { user: req.user });
+app.get("/home", (req, res) => {
+  if (!req.isAuthenticated()) return res.redirect("/");
+  console.log("User authenticated:", req.user.displayName);
+ console.log(req.user.photos[0].value);
+  res.render("home", { user: req.user });
 });
 
-app.get('/logout', (req, res) => {
-  console.log('User logged out:', req.user?.displayName || 'Anonymous');
-  req.logout((err) => {
-    if (err) console.error('Logout error:', err);
-    res.redirect('/');
+app.post("/process-image", upload.single("file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+  console.log("File received:", req.file.originalname);
+  res.json({
+    message: "File uploaded, please wait for the processing",
+    file: req.file.filename,
   });
 });
 
+
 // Start server
 app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+  console.log("Server running on http://localhost:3000");
 });

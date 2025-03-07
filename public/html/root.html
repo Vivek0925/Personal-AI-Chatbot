@@ -13,13 +13,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
     <link rel="stylesheet" href="../css/root.css" />
   </head>
   <body>
     <div class="header">
       <div class="logo">
         <a href="/html/root.html">
-          <img src="/icons/logo.png" class="icons" alt="logo" />
+          <img src="../icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
 
@@ -33,16 +36,20 @@
     </div>
 
     <div class="footer">
-      <form class="search" encoding="multipart/form-data">
+      <form class="search" encoding="multipart/form-data" id="search">
+        
         <input type="file" id="file-input" hidden />
         <label for="file-input" class="upload-label">
-          <img src="/icons/upload.png" class="icons" alt="Upload Iocn" />
+          <!-- <img src="/icons/upload.png" class="icons" alt="Upload Iocn" /> -->
+          <i class="ri-upload-2-line"></i>
+
         </label>
 
         <input type="text" placeholder="What do you want!" />
 
         <button class="send" >
-          <img src="../icons/send.png" class="icons" alt="Send Icon" />
+          <!-- <img src="../icons/send.png" class="icons" alt="Send Icon" /> -->
+          <i class="ri-arrow-up-line"></i>
         </button>
       </form>
     </div>
