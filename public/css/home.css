@@ -81,7 +81,7 @@ body {
   max-width: 700px;
   min-width: 54px;
   margin: auto;
-  /* border:1px solid royalblue; */
+  border:1px solid royalblue;
 }
 .search {
   height: 70px;

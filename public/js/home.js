@@ -107,4 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  document.getElementById("options",{
+    
+  })
 });
+
+
