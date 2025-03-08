@@ -109,6 +109,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ---------------------
+  // event listener for user profile
+  const profileIcon = document.getElementById("profile-icon");
+  const settingsMenu = document.getElementById("settings-menu");
+
+  if (profileIcon && settingsMenu) {
+    profileIcon.addEventListener("click", function (event) {
+      event.stopPropagation();
+      settingsMenu.style.display =
+        settingsMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!profileIcon.contains(event.target) && !settingsMenu.contains(event.target)) {
+        settingsMenu.style.display = "none";
+      }
+    });
+  }
+
+  // ---------------------
+
   document.getElementById("options",{
     
   })

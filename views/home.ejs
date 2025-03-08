@@ -25,22 +25,59 @@
           <img src="/icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
-      <div class="profile">
-        <% if (user && user.photos && user.photos.length > 0) { %>
-        <img
-          src="<%= user.photos[0].value %>"
-          alt="Profile picture"
-          title="<%= user.displayName %>"
-        />
-        <% } else { %>
-        <img
-          src="/icons/default-profile.png"
-          alt="Default profile picture"
-          title="<%= user ? user.displayName : 'User' %>"
-        />
-        <% } %>
+
+      <!-- User Profile Dropdown -->
+      <div class="dropdown">
+        <button id="profile-icon" class="profile">
+          <% if (user && user.photos && user.photos.length > 0) { %>
+          <img
+            src="<%= user.photos[0].value %>"
+            alt="Profile picture"
+            title="<%= user.displayName %>"
+          />
+          <% } else { %>
+          <img
+            src="/icons/default-profile.png"
+            alt="Default profile picture"
+            title="<%= user ? user.displayName : 'User' %>"
+          />
+          <% } %>
+        </button>
+
+        <div id="settings-menu" class="settings-menu">
+          <div class="promo">
+            <img src="/Images/iron-spiderman-marvel-mcu-wq.jpg" alt="Promo Image" />
+            <p>Do more with Personal AI</p>
+          </div>
+
+          <div class="settings-options">
+            <div class="option">
+              <span>Language</span> <span class="value">EN</span>
+            </div>
+            <div class="option">
+              <span>Theme</span> <span class="value">DARK</span>
+            </div>
+            <div class="option">Give feedback</div>
+            <div class="option">About</div>
+            <div class="option">
+              <span>PERSONAL AI</span>
+              <span class="icon"><img src="ailogo.png" alt="" /></span>
+            </div>
+            <button class="sign-out">Sign out</button>
+
+            <div class="footer">
+              <a href="#">Privacy</a>
+              <a href="#">Terms</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+
+  <!-- //---------------------------- -->
+
     <div class="centre" id="chat-box">
       <div
         id="typing-text"
