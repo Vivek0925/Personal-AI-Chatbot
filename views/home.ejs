@@ -21,23 +21,23 @@
   <body>
     <div class="header">
       <div class="logo">
-        <a href="/">
+        <a href="/home">
           <img src="/icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
       <div class="profile">
         <% if (user && user.photos && user.photos.length > 0) { %>
-          <img
-            src="<%= user.photos[0].value %>"
-            alt="Profile picture"
-            title="<%= user.displayName %>"
-          />
+        <img
+          src="<%= user.photos[0].value %>"
+          alt="Profile picture"
+          title="<%= user.displayName %>"
+        />
         <% } else { %>
-          <img
-            src="/icons/default-profile.png"
-            alt="Default profile picture"
-            title="<%= user ? user.displayName : 'User' %>"
-          />
+        <img
+          src="/icons/default-profile.png"
+          alt="Default profile picture"
+          title="<%= user ? user.displayName : 'User' %>"
+        />
         <% } %>
       </div>
     </div>
@@ -46,13 +46,10 @@
         id="typing-text"
         data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant!"
       ></div>
-      <!-- <div id="chat-box" class="chat-box"></div> -->
+      <div id="chat-box" class="chat-box"></div>
     </div>
-
+    <div class="file-display"></div>
     <div class="footer">
-      <div class="file-show">
-        
-      </div>
       <form class="search" enctype="multipart/form-data">
         <input type="file" id="file-input" hidden />
         <label for="file-input" class="upload-label">
@@ -65,6 +62,6 @@
       </form>
     </div>
 
-    <script src="/js/home.js"></script>
+    <script src="../js/home.js"></script>
   </body>
 </html>

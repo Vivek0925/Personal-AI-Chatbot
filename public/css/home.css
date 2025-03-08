@@ -19,7 +19,7 @@ body {
   height: 6vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   padding: 0px 20px 0px 20px;
 }
@@ -76,17 +76,35 @@ body {
   padding: 0px 20px 0px 20px;
 }
 
-.file-show{
+.file-display {
   height: 70px;
   max-width: 700px;
-  min-width: 54px;
+  min-width: 440px;
   margin: auto;
-  border:1px solid royalblue;
+  border: 1px solid royalblue;
 }
+
+/* Message animation styles */
+.message.user.message-slide-in {
+  animation: slideToCenter 0.5s ease-out forwards;
+  transform-origin: right;
+}
+
+@keyframes slideToCenter {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .search {
   height: 70px;
   max-width: 744px;
-  min-width: 64px;
+  min-width: 460px;
   margin: auto;
   border-radius: 40px;
   border: 1px groove rgb(64, 64, 64);
@@ -210,6 +228,7 @@ input {
 @media screen and (max-width: 480px) {
   body {
     overflow: hidden;
+    height: 100vh;
   }
 
   .header {
@@ -234,6 +253,7 @@ input {
   }
 
   .centre {
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;

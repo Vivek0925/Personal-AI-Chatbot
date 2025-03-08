@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sendbtn.disabled = true;
 
+    //file handling
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Chat Error:", error);
         // Remove typing indicator
         chatBox.removeChild(botTyping);
-        showMessage("Let me first the backend bro!🚀", "bot");
+        showMessage("Let me first build the backend bro!🚀", "bot");
       } finally {
         sendbtn.disabled = false;
       }

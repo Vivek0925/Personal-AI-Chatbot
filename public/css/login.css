@@ -26,6 +26,14 @@ body {
   
 }
 
+iframe {
+  position: fixed;
+  width: 100vw;
+  height: 100vh; 
+   border: none;
+   z-index: -1;  
+}
+
 /* Background replacement for iframe */
 .background {
   position: fixed;

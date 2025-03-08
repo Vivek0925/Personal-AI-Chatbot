@@ -40,7 +40,7 @@ body {
   background-color: #2b3247;
   outline: none;
   border: none;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
 .signin-icon {
   color: #f2ddcc;
@@ -108,9 +108,9 @@ input {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
-.ri-upload-2-line{
+.ri-upload-2-line {
   width: 40px;
   height: 40px;
   display: flex;
@@ -120,14 +120,14 @@ input {
   /* background-color: aqua; */
   color: white;
   font-size: 20px;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
-.ri-upload-2-line:hover{
+.ri-upload-2-line:hover {
   color: rgb(0, 140, 255);
 }
-.upload-label:hover{
+.upload-label:hover {
   background-color: white;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
 .send {
   background: transparent;
@@ -138,11 +138,11 @@ input {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
-.send:hover{
+.send:hover {
   background-color: white;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
 /* .send img {
   height: 48px;
@@ -156,15 +156,16 @@ input {
   font-weight: 800;
   /* background-color: aqua; */
   border-radius: 50%;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0s;
 }
-.send i:hover{
-  color:rgb(0, 140, 255) ;
-  transition: cubic-bezier(0.19, 1, 0.22, 1)0.5s;
+.send i:hover {
+  color: rgb(0, 140, 255);
+  transition: cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
 }
 @media screen and (max-width: 480px) {
   body {
     overflow: hidden;
+    height: 100vh;
   }
 
   .header {
@@ -184,14 +185,13 @@ input {
   }
 
   #typing-text {
+    padding-top:100px;
     font-size: 1.5em;
     margin-bottom: 20px;
   }
 
   .centre {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 75vh;
     padding: 0 15px;
   }
 
@@ -210,7 +210,7 @@ input {
     width: 30px;
     height: 30px;
   }
-  .ri-upload-2-line{
+  .ri-upload-2-line {
     color: white;
     font-size: 17px;
   }
@@ -218,4 +218,3 @@ input {
     height: 35px;
   }
 }
-

@@ -15,7 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json()); // For chat endpoint if you add it later
+app.use(express.json());
 app.use(
   session({
     secret: "secure",
@@ -76,17 +76,6 @@ app.get("/home", (req, res) => {
   console.log("User authenticated:", req.user);
  console.log(req.user.photos[0].value);
   res.render("home", { user: req.user });
-});
-
-app.post("/process-image", upload.single("file"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded" });
-  }
-  console.log("File received:", req.file.originalname);
-  res.json({
-    message: "File uploaded, please wait for the processing",
-    file: req.file.filename,
-  });
 });
 
 
