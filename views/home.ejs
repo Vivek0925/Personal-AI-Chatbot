@@ -49,11 +49,11 @@
         Language &nbsp;<i class="fa-solid fa-language" id="icons"></i>
       </button>
       <button class="options">Theme</button>
-      <button class="options" >
+      <button class="options">
         Give feedback<i class="ri-feedback-line" id="icons"></i>
       </button>
       <button class="options">About</button>
-      <button class="signout">
+      <button class="logout">
         Sign out &nbsp;&nbsp;<i class="ri-logout-box-r-line"></i>
       </button>
       <div class="links">
@@ -71,8 +71,8 @@
     </div>
     <div class="file-display"></div>
     <div class="footer">
-      <form class="search" enctype="multipart/form-data">
-        <input type="file" id="file-input" hidden />
+      <form class="search" enctype="multipart/form-data" action="/upload">
+        <input type="file" id="file-input" name="file-input" hidden multiple />
         <label for="file-input" class="upload-label">
           <i class="ri-upload-2-line"></i>
         </label>
@@ -86,3 +86,6 @@
     <script src="../js/home.js"></script>
   </body>
 </html>
+
+
+

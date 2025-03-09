@@ -37,7 +37,7 @@ body {
   position: fixed;
   right: 2vw;
   top: 7vh;
-   background-color: #2a2b2c ;
+  background-color: #1e2227;
   /* background: transparent; */
   border-radius: 15px;
   color: white;
@@ -59,7 +59,7 @@ body {
 .options {
   font-size: 14px;
   text-align: start;
-  color: white;
+  color: #f2ddcc;
   font-family: arial;
   font-weight: 500;
   height: 35px;
@@ -81,7 +81,7 @@ body {
   background-color: rgb(243, 243, 243);
 }
 
-.signout {
+.logout {
   height: 35px;
   width: 80%;
   font-weight: 600;
@@ -90,18 +90,18 @@ body {
   border-radius: 10px;
 }
 
-.signout:hover {
+.logout:hover {
   color: rgb(203, 20, 20);
 }
 
 .links {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   color: #3663eb;
   cursor: pointer;
 }
 
-#icons{
-font-size: 18px;
+#icons {
+  font-size: 18px;
 }
 .centre {
   height: 80vh;
@@ -176,9 +176,9 @@ font-size: 18px;
 }
 
 .search {
-  height: 70px;
+  height: 65px;
   max-width: 744px;
-  min-width: 460px;
+  min-width: 64px;
   margin: auto;
   border-radius: 40px;
   border: 1px groove rgb(64, 64, 64);
@@ -189,11 +189,12 @@ font-size: 18px;
 }
 .search:has(input:focus) {
   border: 1px solid #6d6a73;
-  transition: border 0.3s ease;
+  transition: border 0.4s ease;
 }
+
 input {
-  height: 65%;
-  width: 78%;
+  height: 50%;
+  width: 80%;
   font-size: 16px;
   padding: 20px;
   color: white;

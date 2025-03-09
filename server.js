@@ -7,7 +7,7 @@ const multer = require("multer");
 require("dotenv").config();
 
 const app = express();
-const upload = multer({ dest: "upload/" });
+const upload = multer({ destination: "upload/" });
 
 // Set up EJS
 app.set("view engine", "ejs");
@@ -107,6 +107,10 @@ app.post(
     res.send("File upload successful");
   }
 );
+
+app.get("/logout", (req,res)=>{
+res.redirect("/");
+})
 
 // Start server
 app.listen(3000, "0.0.0.0", () => {
