@@ -37,8 +37,7 @@ body {
   position: fixed;
   right: 2vw;
   top: 7vh;
-  background-color: #1e2227;
-  /* background: transparent; */
+  background-color: #21252b;
   border-radius: 15px;
   color: white;
   border: 1px solid white;
@@ -59,7 +58,7 @@ body {
 .options {
   font-size: 14px;
   text-align: start;
-  color: #f2ddcc;
+  color: white;
   font-family: arial;
   font-weight: 500;
   height: 35px;
@@ -67,7 +66,7 @@ body {
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background: transparent;
+  background: #2d2d2d;
   display: flex;
   justify-content: space-between;
   z-index: 1000;
@@ -104,7 +103,7 @@ body {
   font-size: 18px;
 }
 .centre {
-  height: 75vh;
+  height: 80vh;
   overflow-y: auto;
   max-width: 680px;
   min-width: 64px;
@@ -151,7 +150,7 @@ body {
 }
 
 .file-display {
-  height: 7vh;
+  height: 70px;
   max-width: 700px;
   min-width: 440px;
   margin: auto;
@@ -176,9 +175,9 @@ body {
 }
 
 .search {
-  height: 65px;
+  height: 70px;
   max-width: 744px;
-  min-width: 64px;
+  min-width: 460px;
   margin: auto;
   border-radius: 40px;
   border: 1px groove rgb(64, 64, 64);
@@ -189,12 +188,11 @@ body {
 }
 .search:has(input:focus) {
   border: 1px solid #6d6a73;
-  transition: border 0.4s ease;
+  transition: border 0.3s ease;
 }
-
 input {
-  height: 50%;
-  width: 80%;
+  height: 65%;
+  width: 78%;
   font-size: 16px;
   padding: 20px;
   color: white;
@@ -277,99 +275,7 @@ input {
   opacity: 0;
   transform: translateY(10px);
   animation: fadeIn 0.3s forwards;
-  max-width: 65%;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
 }
-
-/* Profile dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.settings-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 60px;
-  background-color: #161a2b;
-  color: white;
-  width: 250px;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-}
-
-.profile img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.settings-options {
-  margin-top: 10px;
-}
-
-.option {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.sign-out {
-  width: 100%;
-  background: linear-gradient(137deg, red, blue);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 10px;
-}
-.promo {
-  text-align: center;
-}
-
-.promo img {
-  width: 100%;
-  border-radius: 35px;
-}
-
-.promo p {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.promo-btn {
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-/* ---------------------- */
 @keyframes fadeIn {
   to {
     opacity: 1;
