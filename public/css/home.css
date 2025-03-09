@@ -29,6 +29,80 @@ body {
   width: auto;
 }
 
+.settings {
+  display: none;
+  max-height: 500px;
+  min-height: 400px;
+  width: 250px;
+  position: fixed;
+  right: 2vw;
+  top: 7vh;
+   background-color: #2a2b2c ;
+  /* background: transparent; */
+  border-radius: 15px;
+  color: white;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.info {
+  height: 60px;
+  width: 90%;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+.options {
+  font-size: 14px;
+  text-align: start;
+  color: white;
+  font-family: arial;
+  font-weight: 500;
+  height: 35px;
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.options:hover {
+  color: #008cff;
+  font-weight: 600;
+  box-shadow: none;
+  opacity: 0.9;
+  background-color: rgb(243, 243, 243);
+}
+
+.signout {
+  height: 35px;
+  width: 80%;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.signout:hover {
+  color: rgb(203, 20, 20);
+}
+
+.links {
+  font-family: 'Times New Roman', Times, serif;
+  color: #3663eb;
+  cursor: pointer;
+}
+
+#icons{
+font-size: 18px;
+}
 .centre {
   height: 80vh;
   overflow-y: auto;
@@ -283,8 +357,3 @@ input {
     height: 35px;
   }
 }
-
-
-
-
-

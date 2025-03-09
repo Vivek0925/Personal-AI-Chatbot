@@ -86,6 +86,7 @@ app.get("/home", ensureAuthenticated, (req, res) => {
   res.render("home", {
     user: req.user || {
       displayName: "Guest (Bypass Mode)",
+      email:"akashpatel@gmail.com",
       photos: [
         {
           value:
