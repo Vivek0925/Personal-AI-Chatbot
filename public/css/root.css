@@ -19,7 +19,7 @@ body {
   height: 6vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   padding: 0px 20px 0px 20px;
 }
@@ -50,7 +50,7 @@ body {
   /* background-color: aqua; */
 }
 .centre {
-  height: 84vh;
+  height: 80vh;
   max-width: 680px;
   min-width: 64px;
   margin: auto;
@@ -62,6 +62,14 @@ body {
   color: #f2ddcc;
 }
 
+.file-display {
+  height: 70px;
+  max-width: 700px;
+  min-width: 440px;
+  margin: auto;
+  /* border: 1px solid royalblue; */
+}
+
 .footer {
   height: 9vh;
   margin: auto;
@@ -69,7 +77,7 @@ body {
 }
 
 .search {
-  height: 70px;
+  height: 65px;
   max-width: 744px;
   min-width: 64px;
   margin: auto;
@@ -86,7 +94,7 @@ body {
 }
 
 input {
-  height: 65%;
+  height: 50%;
   width: 80%;
   font-size: 16px;
   padding: 20px;
@@ -185,7 +193,7 @@ input {
   }
 
   #typing-text {
-    padding-top:100px;
+    padding-top: 100px;
     font-size: 1.5em;
     margin-bottom: 20px;
   }
