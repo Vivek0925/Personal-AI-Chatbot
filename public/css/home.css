@@ -84,13 +84,16 @@ body {
   height: 35px;
   width: 80%;
   font-weight: 600;
-  outline: none;
-  border: none;
+  border: 1px solid white; 
   border-radius: 10px;
+  background-color: transparent;
+  color:white;
+
 }
 
 .logout:hover {
   color: rgb(203, 20, 20);
+  background-color: white;
 }
 
 .links {
