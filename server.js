@@ -3,8 +3,8 @@ const passport = require("passport");
 const session = require("express-session");
 const path = require("path");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-require("dotenv").config();
 const multer = require("multer");
+require("dotenv").config();
 
 const app = express();
 const upload = multer({ dest: "upload/" });
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(
   session({
-    secret: "secure",
+    secret: process.env.SESSION_SECRET || "secure",
     resave: false,
     saveUninitialized: true,
   })
@@ -44,22 +44,32 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
+passport.deserializeUser((user, done) => {
+  done(null, user);
 });
+
+// Authentication Middleware with Bypass
+const ensureAuthenticated = (req, res, next) => {
+  if (req.query.bypass === "true") {
+    console.log("🔓 Bypass enabled: Skipping authentication");
+    return next();
+  }
+  if (req.isAuthenticated()) return next();
+  res.redirect("/");
+};
 
 // Routes
 app.get("/", (req, res) => {
-  if (!req.isAuthenticated()) {
-    return res.sendFile(path.join(__dirname, "public/html/root.html"));
+  if (req.isAuthenticated() || req.query.bypass === "true") {
+    return res.redirect("/home");
   }
-  res.render("home", { user: req.user });
+  res.sendFile(path.join(__dirname, "public/html/root.html"));
 });
 
 app.get(
   "/auth/google",
   passport.authenticate("google", {
-    scope: ["profile", "email", "https://www.googleapis.com/auth/drive.file"],
+    scope: ["profile", "email"],
   })
 );
 
@@ -71,15 +81,33 @@ app.get(
   }
 );
 
-app.get("/home", (req, res) => {
-  if (!req.isAuthenticated()) return res.redirect("/");
-  console.log("User authenticated:", req.user);
- console.log(req.user.photos[0].value);
-  res.render("home", { user: req.user });
+app.get("/home", ensureAuthenticated, (req, res) => {
+  console.log("User authenticated:", req.user || "Bypass Mode");
+  res.render("home", {
+    user: req.user || {
+      displayName: "Guest (Bypass Mode)",
+      photos: [
+        {
+          value:
+            "https://lh3.googleusercontent.com/a/ACg8ocLMB_R_6fSNN6w3KOrRZtqr9m_sRWQu3rKpIsaQM_qiZALlHPlJ=s96-c",
+        },
+      ],
+    },
+  });
 });
 
+app.post(
+  "/upload",
+  ensureAuthenticated,
+  upload.single("file-input"),
+  (req, res) => {
+    console.log(req.file);
+    console.log(req.body);
+    res.send("File upload successful");
+  }
+);
 
 // Start server
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+app.listen(3000, "0.0.0.0", () => {
+  console.log("Server running on port 3000");
 });
