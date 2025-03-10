@@ -7,7 +7,6 @@ const multer = require("multer");
 require("dotenv").config();
 
 const app = express();
-const upload = multer({ destination: "upload/" });
 
 // Set up EJS
 app.set("view engine", "ejs");
@@ -25,6 +24,19 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "upload/");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // Passport.js setup
 passport.use(
@@ -84,16 +96,9 @@ app.get("/home", ensureAuthenticated, (req, res) => {
   });
 });
 
-app.post(
-  "/upload",
-  ensureAuthenticated,
-  upload.single("file-input"),
-  (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    res.send("File upload successful");
-  }
-);
+app.post("/upload", upload.single("file-input"), (req, res) => {
+  console.log(req.file);
+});
 
 app.get("/logout", (req, res) => {
   req.logout(function (err) {
