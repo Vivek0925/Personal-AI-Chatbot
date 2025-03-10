@@ -27,7 +27,6 @@
       </div>
 
       <!-- User Profile Dropdown -->
-
       <div class="dropdown">
         <button id="profile-icon" class="profile">
           <% if (user && user.photos && user.photos.length > 0) { %>
@@ -47,7 +46,7 @@
 
         <div id="settings-menu" class="settings-menu">
           <div class="promo">
-            <img src="/Images/iron-spiderman-marvel-mcu-wq.jpg" alt="">
+            <img src="/Images/iron-spiderman-marvel-mcu-wq.jpg" alt="Promo Image" />
             <p>Do more with Personal AI</p>
           </div>
 
@@ -76,9 +75,6 @@
       </div>
     </div>
 
-
-  <!-- //---------------------------- -->
-
     <div class="centre" id="chat-box">
       <div
         id="typing-text"
@@ -86,10 +82,9 @@
       ></div>
       <div id="chat-box" class="chat-box"></div>
     </div>
-    <div class="file-display"></div>
     <div class="footer">
-      <form class="search" enctype="multipart/form-data">
-        <input type="file" id="file-input" hidden />
+      <form class="search" enctype="multipart/form-data" action="/upload">
+        <input type="file" id="file-input" name="file-input" hidden multiple />
         <label for="file-input" class="upload-label">
           <i class="ri-upload-2-line"></i>
         </label>

@@ -16,10 +16,10 @@ body {
 }
 
 .header {
-  height: 6vh;
+  height: 7vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   padding: 0px 20px 0px 20px;
 }
@@ -50,7 +50,7 @@ body {
   /* background-color: aqua; */
 }
 .centre {
-  height: 84vh;
+  height: 83vh;
   max-width: 680px;
   min-width: 64px;
   margin: auto;
@@ -63,7 +63,7 @@ body {
 }
 
 .footer {
-  height: 9vh;
+  height: 7vh;
   margin: auto;
   padding: 0px 20px 0px 20px;
 }
@@ -71,7 +71,7 @@ body {
 .search {
   height: 70px;
   max-width: 744px;
-  min-width: 64px;
+  min-width: 460px;
   margin: auto;
   border-radius: 40px;
   border: 1px groove rgb(64, 64, 64);
@@ -82,12 +82,11 @@ body {
 }
 .search:has(input:focus) {
   border: 1px solid #6d6a73;
-  transition: border 0.4s ease;
+  transition: border 0.3s ease;
 }
-
 input {
   height: 65%;
-  width: 80%;
+  width: 78%;
   font-size: 16px;
   padding: 20px;
   color: white;
@@ -98,6 +97,7 @@ input {
   background-color: #1c1c1c;
   border: 1px dashed rgb(73, 73, 73);
 }
+
 
 .upload-label {
   cursor: pointer;
@@ -185,7 +185,7 @@ input {
   }
 
   #typing-text {
-    padding-top:100px;
+    padding-top: 100px;
     font-size: 1.5em;
     margin-bottom: 20px;
   }
