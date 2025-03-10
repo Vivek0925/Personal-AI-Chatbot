@@ -24,6 +24,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "upload/");
@@ -96,8 +97,23 @@ app.get("/home", ensureAuthenticated, (req, res) => {
   });
 });
 
-app.post("/upload", upload.single("file-input"), (req, res) => {
-  console.log(req.file);
+app.post("/upload", upload.any(), (req, res) => {
+  console.log(req.files);
+  console.log(req.body);
+
+  // Check if files exist
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).send("No files uploaded.");
+  }
+
+  // Check maximum files
+  const maxFiles = 5;
+  if (req.files.length > maxFiles) {
+    return res.status(400).send(`Maximum ${maxFiles} files allowed.`);
+  }
+
+  console.log("Upload successful");
+  res.status(200).send("Files uploaded successfully");
 });
 
 app.get("/logout", (req, res) => {
