@@ -48,15 +48,19 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Authentication Middleware without bypass
+// Authentication Middleware with Bypass
 const ensureAuthenticated = (req, res, next) => {
+  if (req.query.bypass === "true") {
+    console.log("🔓 Bypass enabled: Skipping authentication");
+    return next();
+  }
   if (req.isAuthenticated()) return next();
   res.redirect("/");
 };
 
 // Routes
 app.get("/", (req, res) => {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated() || req.query.bypass === "true") {
     return res.redirect("/home");
   }
   res.sendFile(path.join(__dirname, "public/html/root.html"));
@@ -78,9 +82,18 @@ app.get(
 );
 
 app.get("/home", ensureAuthenticated, (req, res) => {
-  console.log("User authenticated:", req.user);
+  console.log("User authenticated:", req.user || "Bypass Mode");
   res.render("home", {
-    user: req.user,
+    user: req.user || {
+      displayName: "Guest (Bypass Mode)",
+      email: "akashpatel@gmail.com",
+      photos: [
+        {
+          value:
+            "https://lh3.googleusercontent.com/a/ACg8ocLMB_R_6fSNN6w3KOrRZtqr9m_sRWQu3rKpIsaQM_qiZALlHPlJ=s96-c",
+        },
+      ],
+    },
   });
 });
 
@@ -96,12 +109,7 @@ app.post(
 );
 
 app.get("/logout", (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
+  res.redirect("/");
 });
 
 // Start server

@@ -43,8 +43,7 @@
     </div>
 
     <div class="settings">
-      <button class="info"><%=user.displayName%>
-        <%=user.email%></button>
+      <button class="info"><%=user.displayName%> <%=user.email%></button>
 
       <button class="options">
         Language &nbsp;<i class="fa-solid fa-language" id="icons"></i>
@@ -70,7 +69,6 @@
       ></div>
       <div id="chat-box" class="chat-box"></div>
     </div>
-    <div class="file-display"></div>
     <div class="footer">
       <form class="search" enctype="multipart/form-data" action="/upload">
         <input type="file" id="file-input" name="file-input" hidden multiple />
@@ -87,5 +85,3 @@
     <script src="../js/home.js"></script>
   </body>
 </html>
-
-

@@ -16,7 +16,7 @@ body {
 }
 
 .header {
-  height: 6vh;
+  height: 7vh;
   width: 100%;
   display: flex;
   align-items: end;
@@ -35,8 +35,8 @@ body {
   min-height: 400px;
   width: 250px;
   position: fixed;
-  right: 2vw;
-  top: 7vh;
+  right: 20px;
+  top: 9vh;
   background-color: #21252b;
   border-radius: 15px;
   color: white;
@@ -106,7 +106,7 @@ body {
   font-size: 18px;
 }
 .centre {
-  height: 80vh;
+  height: 83vh;
   overflow-y: auto;
   max-width: 680px;
   min-width: 64px;
@@ -152,13 +152,7 @@ body {
   padding: 0px 20px 0px 20px;
 }
 
-.file-display {
-  height: 70px;
-  max-width: 700px;
-  min-width: 440px;
-  margin: auto;
-  border: 1px solid royalblue;
-}
+
 
 /* Message animation styles */
 .message.user.message-slide-in {
@@ -359,3 +353,4 @@ input {
     height: 35px;
   }
 }
+
