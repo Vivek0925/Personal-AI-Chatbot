@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
-
-const genAI = new GoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
+require("dotenv").config();
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Converts local file information to base64
 function fileToGenerativePart(path, mimeType) {
@@ -16,11 +16,11 @@ function fileToGenerativePart(path, mimeType) {
 async function run() {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
-  const prompt = "Identify the document name.";
+  const prompt = "What is the document name in one word.";
 
   const imageParts = [
-    fileToGenerativePart("Images/1.jpg", "Image"),
-    fileToGenerativePart("Images/2.jpeg", "Image"),
+    fileToGenerativePart(__dirname + "/images/1.jpg", "image/jpg"),
+    fileToGenerativePart(__dirname + "/images/2.jpeg", "image/jpeg"),
   ];
 
   const generatedContent = await model.generateContent([prompt, ...imageParts]);
