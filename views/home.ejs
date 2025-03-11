@@ -25,40 +25,53 @@
           <img src="/icons/logo.png" class="icons" alt="logo" />
         </a>
       </div>
-      <div class="profile">
-        <% if (user && user.photos && user.photos.length > 0) { %>
-        <img
-          src="<%= user.photos[0].value %>"
-          alt="Profile picture"
-          title="<%= user.displayName %>"
-        />
-        <% } else { %>
-        <img
-          src="/icons/default-profile.png"
-          alt="Default profile picture"
-          title="<%= user ? user.displayName : 'User' %>"
-        />
-        <% } %>
-      </div>
-    </div>
+     <!-- User Profile Dropdown -->
 
-    <div class="settings">
-      <button class="info"><%=user.displayName%> <%=user.email%></button>
+      <div class="dropdown">
+        <button id="profile-icon" class="profile">
+          <% if (user && user.photos && user.photos.length > 0) { %>
+          <img
+            src="<%= user.photos[0].value %>"
+            alt="Profile picture"
+            title="<%= user.displayName %>"
+          />
+          <% } else { %>
+          <img
+            src="/icons/default-profile.png"
+            alt="Default profile picture"
+            title="<%= user ? user.displayName : 'User' %>"
+          />
+          <% } %>
+        </button>
 
-      <button class="options">
-        Language &nbsp;<i class="fa-solid fa-language" id="icons"></i>
-      </button>
-      <button class="options">Theme</button>
-      <button class="options">
-        Give feedback<i class="ri-feedback-line" id="icons"></i>
-      </button>
-      <button class="options">About</button>
-      <button class="logout">
-        Sign out &nbsp;&nbsp;<i class="ri-logout-box-r-line"></i>
-      </button>
-      <div class="links">
-        <a type="">Privacy</a> &nbsp;&nbsp; <a src="">Terms</a>&nbsp;&nbsp;
-        <a src="">FAQ</a>&nbsp;&nbsp;
+        <div id="settings-menu" class="settings-menu">
+          <button class="info"><%=user.displayName%> <%=user.email%></button>
+          <div class="promo">
+            <p>Do more with Personal AI</p>
+          </div>
+
+          <div class="settings-options">
+            <div class="option">
+              Language &nbsp;<i class="fa-solid fa-language" id="icons"></i>
+            </div>
+            <div class="option">
+              <span>Theme</span> <span class="value">DARK</span>
+            </div>
+            <div class="option">Give feedback<i class="ri-feedback-line" id="icons"></i></div>
+            <div class="option">About</div>
+            <div class="option">
+              <span>PERSONAL AI</span>
+              <span class="icon"><img width="30" src="/icons/logo.png" alt="" /></span>
+            </div>
+            <button class="sign-out">Sign out</button>
+
+            <div class="footer">
+              <a href="#">Privacy</a>
+              <a href="#">Terms</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

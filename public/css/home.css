@@ -29,8 +29,13 @@ body {
   width: auto;
 }
 
-.settings {
-  display: none;
+/* Profile dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.settings-menu {
   max-height: 500px;
   min-height: 400px;
   width: 250px;
@@ -41,60 +46,106 @@ body {
   border-radius: 15px;
   color: white;
   border: 1px solid white;
+  padding: 15px 0;
+  display: none; /* Hidden by default */
+}
+
+
+.settings-menu.active {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+}
+
+
+.settings-menu p {
+  text-align: center;
+  padding: 10px 15px;
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  width: 100%;
+  background-color: #181c24;
+}
+
+
+.settings-options {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .info {
-  height: 60px;
-  width: 90%;
+  background: #787777;
+  color: white;
+  height: 20px;
+  width: 100%;
   font-weight: 500;
   outline: none;
   border: none;
-  border-radius: 10px;
 }
-.options {
+.option {
   font-size: 14px;
-  text-align: start;
-  color: white;
-  font-family: arial;
-  font-weight: 500;
-  height: 35px;
-  width: 80%;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
+  padding: 12px 15px;
+  border-radius: 8px;
   background: #2d2d2d;
+  color: white;
   display: flex;
   justify-content: space-between;
-  z-index: 1000;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.options:hover {
-  color: #008cff;
-  font-weight: 600;
-  box-shadow: none;
-  opacity: 0.9;
-  background-color: rgb(243, 243, 243);
+.value {
+  color: #e2e6e8;
 }
 
-.logout {
-  height: 35px;
-  width: 80%;
+
+.sign-out {
+  margin: 20px auto;
+  height: 40px;
+  width: calc(100% - 30px);
   font-weight: 600;
-  border: 1px solid white; 
+  border: 1px solid white;
   border-radius: 10px;
   background-color: transparent;
-  color:white;
-
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sign-out:hover{
+  background-color: rgba(222, 222, 222, 0.765);
+  color: black;
 }
 
-.logout:hover {
-  color: rgb(203, 20, 20);
-  background-color: white;
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
+
+.footer a {
+  color: #0066ff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.promo {
+  text-align: center;
+  background-color: grey;
+}
+
+
+.promo p {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
 
 .links {
   font-family: "Times New Roman", Times, serif;
@@ -105,6 +156,7 @@ body {
 #icons {
   font-size: 18px;
 }
+
 .centre {
   height: 83vh;
   overflow-y: auto;

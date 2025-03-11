@@ -78,10 +78,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Logout functionality
-  const logoutBtn = document.querySelector(".logout");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
+   const signOutBtn = document.querySelector(".sign-out");
+  if (signOutBtn) {
+    signOutBtn.addEventListener("click", function() {
       window.location.href = "/logout";
     });
   }
 });
+
+ // ---------------------
+  // event listener for user profile
+  const profileIcon = document.getElementById("profile-icon");
+  const settingsMenu = document.getElementById("settings-menu");
+
+  if (profileIcon && settingsMenu) {
+    profileIcon.addEventListener("click", function (event) {
+      event.stopPropagation();
+      settingsMenu.style.display =
+        settingsMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!profileIcon.contains(event.target) && !settingsMenu.contains(event.target)) {
+        settingsMenu.style.display = "none";
+      }
+    });
+  }
+  // ---------------------
+
+
+
