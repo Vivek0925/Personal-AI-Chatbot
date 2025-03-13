@@ -29,22 +29,28 @@ body {
   width: auto;
 }
 
-
-
 .settings {
   position: absolute;
-  top: 9vh;
+  top: 8vh;
   right: 20px;
   max-height: 500px;
   min-height: 400px;
   width: 250px;
   background-color: #414158;
   border-radius: 8px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-   border: 1px solid white;
+  border: 1px solid white;
+
+  opacity: 0; /* Initially hidden */
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.settings.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .info {
@@ -73,6 +79,7 @@ body {
 }
 
 .options:hover {
+  transition: all 0.4s ease;
   color: #008cff;
   font-weight: 600;
   box-shadow: none;
@@ -96,7 +103,8 @@ body {
 }
 
 .links {
-  font-family: "Times New Roman", Times, serif;
+  font-family: serif;
+  font-weight: 600;
   color: #3663eb;
   cursor: pointer;
 }
@@ -117,6 +125,16 @@ body {
 }
 .centre::-webkit-scrollbar {
   display: none;
+}
+
+.preview {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
+  width: 250px;
+  border: 1px solid white;
 }
 
 .profile {
