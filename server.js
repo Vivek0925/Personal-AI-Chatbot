@@ -7,7 +7,6 @@ const multer = require("multer");
 require("dotenv").config();
 
 const app = express();
-const upload = multer({ destination: "upload/" });
 
 // Set up EJS
 app.set("view engine", "ejs");
@@ -15,16 +14,30 @@ app.set("views", path.join(__dirname, "views"));
 
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json());
+// app.use(express.json());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "secure",
+    secret: process.env.SESSION_SECRET ,
     resave: false,
     saveUninitialized: true,
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "upload/");
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // Passport.js setup
 passport.use(
@@ -84,16 +97,24 @@ app.get("/home", ensureAuthenticated, (req, res) => {
   });
 });
 
-app.post(
-  "/upload",
-  ensureAuthenticated,
-  upload.single("file-input"),
-  (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    res.send("File upload successful");
+app.post("/upload", upload.any(), (req, res) => {
+  console.log(req.files);
+  console.log(req.body);
+
+  // Check if files exist
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).send("No files uploaded.");
   }
-);
+
+  // Check maximum files
+  const maxFiles = 5;
+  if (req.files.length > maxFiles) {
+    return res.status(400).send(`Maximum ${maxFiles} files allowed.`);
+  }
+
+  console.log("Upload successful");
+  res.status(200).send("Files uploaded successfully");
+});
 
 app.get("/logout", (req, res) => {
   req.logout(function (err) {

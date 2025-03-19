@@ -80,10 +80,16 @@
         id="typing-text"
         data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant!"
       ></div>
-      <div id="chat-box" class="chat-box"></div>
+      <div class="preview"></div>
     </div>
+
     <div class="footer">
-      <form class="search" enctype="multipart/form-data" action="/upload">
+      <form
+        class="search"
+        enctype="multipart/form-data"
+        action="/upload"
+        method="POST"
+      >
         <input type="file" id="file-input" name="file-input" hidden multiple />
         <label for="file-input" class="upload-label">
           <i class="ri-upload-2-line"></i>

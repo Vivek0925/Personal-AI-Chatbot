@@ -1,21 +1,39 @@
-const GoogleGenerativeAI = require("@googel/generative-ai");
-const fs = require("node:fs")
+// const { GoogleGenerativeAI } = require("@google/generative-ai");
+// require("dotenv").config(); 
+// // Ensure API Key is loaded
+// if (!process.env.GEMINI_API_KEY) {
+//   console.error("⚠️  Gemini API Key is missing! Check your .env file.");
+//   process.exit(1);
+// }
 
-const genAI = new GoogleGenerativeAI("AIzaSyCH_VSNVC1r-IfeHloC0lfD8qkbK_toohY");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-function fileToGenerativePart(path, mimeType) {
+// // Initialize the model
+// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+// const userPrompt = "I want adhar card.";
+// const prompt = `Extract a one-word document name in lowecase from this request in JSON format: "${userPrompt}"`;
+
+// async function generateContent() {
+//   try {
+//     const result = await model.generateContent(prompt);
+//     const response = await result.response.text(); 
+
+//     console.log("Gemini API Response:", response);
+//   } catch (error) {
+//     console.error("❌ Error generating content:", error);
+//   }
+// }
+
+// generateContent();
+
+function mockGeminiResponse(userPrompt) {
   return {
-    inlineData: {
-      data: Buffer.from(fs.readFileSync(path)).toString("base64"),
-      mimeType,
-    },
+    document_name: userPrompt, 
   };
 }
 
-const prompt = "Give oneword file name for this document along with the owner name in lowercase only";
-const imagePart = fileToGenerativePart("./2.jpeg", "image/jpeg");
-
-
-const result = await model.generateContent([prompt, imagePart]);
-console.log(result.response.text());
+// Example usage:
+const userPrompt = "adhar";
+const response = mockGeminiResponse(userPrompt);
+console.log(response);

@@ -7,13 +7,23 @@ const multer = require("multer");
 require("dotenv").config();
 
 const app = express();
-const upload = multer({ destination: "upload/" });
+
 
 // Set up EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Middleware
+
+// Authentication Middleware with Bypass
+const ensureAuthenticated = (req, res, next) => {
+  if (req.query.bypass === "true") {
+    console.log("🔓 Bypass enabled: Skipping authentication");
+    return next();
+  }
+  if (req.isAuthenticated()) return next();
+  res.redirect("/");
+};
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(
@@ -25,6 +35,18 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "upload/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(
+//       null,
+//       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     );
+//   },
+// });
+const upload = multer({ destination: "upload/" });
 
 // Passport.js setup
 passport.use(
@@ -48,15 +70,6 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Authentication Middleware with Bypass
-const ensureAuthenticated = (req, res, next) => {
-  if (req.query.bypass === "true") {
-    console.log("🔓 Bypass enabled: Skipping authentication");
-    return next();
-  }
-  if (req.isAuthenticated()) return next();
-  res.redirect("/");
-};
 
 // Routes
 app.get("/", (req, res) => {

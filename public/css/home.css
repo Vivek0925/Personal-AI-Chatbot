@@ -16,7 +16,7 @@ body {
 }
 
 .header {
-  height: 7vh;
+  height: 6vh;
   width: 100%;
   display: flex;
   align-items: end;
@@ -29,13 +29,8 @@ body {
   width: auto;
 }
 
-/* Profile dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.settings-menu {
+.settings {
+  display: none;
   max-height: 500px;
   min-height: 400px;
   width: 250px;
@@ -46,33 +41,10 @@ body {
   border-radius: 15px;
   color: white;
   border: 1px solid white;
-  padding: 15px 0;
-  display: none; /* Hidden by default */
-}
-
-
-.settings-menu.active {
   display: flex;
   flex-direction: column;
-}
-
-
-.settings-menu p {
-  text-align: center;
-  padding: 10px 15px;
-  margin: 0 0 15px 0;
-  font-size: 16px;
-  width: 100%;
-  background-color: #181c24;
-}
-
-
-.settings-options {
-  width: 100%;
-  padding: 0 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .info {
@@ -92,9 +64,15 @@ body {
   color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  z-index: 1000;
+}
+
+.options:hover {
+  color: #008cff;
+  font-weight: 600;
+  box-shadow: none;
+  opacity: 0.9;
+  background-color: rgb(243, 243, 243);
 }
 
 .value {
@@ -110,9 +88,8 @@ body {
   border: 1px solid white;
   border-radius: 10px;
   background-color: transparent;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
+  color:white;
+
 }
 .sign-out:hover{
   background-color: rgba(222, 222, 222, 0.765);
@@ -148,7 +125,8 @@ body {
 
 
 .links {
-  font-family: "Times New Roman", Times, serif;
+  font-family: serif;
+  font-weight: 600;
   color: #3663eb;
   cursor: pointer;
 }
@@ -158,7 +136,7 @@ body {
 }
 
 .centre {
-  height: 83vh;
+  height: 85vh;
   overflow-y: auto;
   max-width: 680px;
   min-width: 64px;
@@ -170,6 +148,16 @@ body {
 }
 .centre::-webkit-scrollbar {
   display: none;
+}
+
+.preview {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
+  width: 250px;
+  border: 1px solid white;
 }
 
 .profile {
@@ -203,8 +191,6 @@ body {
   margin: auto;
   padding: 0px 20px 0px 20px;
 }
-
-
 
 /* Message animation styles */
 .message.user.message-slide-in {
@@ -324,6 +310,7 @@ input {
   opacity: 0;
   transform: translateY(10px);
   animation: fadeIn 0.3s forwards;
+  word-wrap: break-word;
 }
 @keyframes fadeIn {
   to {
@@ -405,4 +392,3 @@ input {
     height: 35px;
   }
 }
-

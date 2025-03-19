@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Handle typing animation for welcome message
+  // typing animation
   const typingText = document.getElementById("typing-text");
-
   function initTypeAnimation() {
     const text = typingText.getAttribute("data-text");
-    typingText.textContent = ""; // Clear the element
+    typingText.textContent = "";
     let i = 0;
 
     function typeWriter() {
@@ -17,65 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeWriter();
   }
-
-  // Start the typing animation when page loads
-  initTypeAnimation();
-
-  // Chat functionality
-  const chatBox = document.querySelector("#chat-box");
-  const form = document.querySelector(".search");
-  const textInput = document.querySelector(".search input[type='text']");
-  const sendbtn = document.querySelector(".send");
-
-  function showMessage(content, sender) {
-    let message = document.createElement("div");
-    message.classList.add("message", sender);
-    message.innerHTML = `<p>${content}</p>`;
-    chatBox.appendChild(message);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const userInput = textInput.value.trim();
-
-    if (!userInput) {
-      alert("Please enter a message.");
-      return;
-    }
-
-    sendbtn.disabled = true;
-    showMessage(userInput, "user");
-    textInput.value = "";
-
-    // For bot typing animation
-    const botTyping = document.createElement("div");
-    botTyping.classList.add("message", "bot", "typing");
-    botTyping.innerHTML = "<p>Typing...</p>";
-    chatBox.appendChild(botTyping);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    try {
-      let response = await fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userInput }),
-      });
-
-      let data = await response.json();
-      // Remove typing indicator
-      chatBox.removeChild(botTyping);
-      showMessage(data.replay || "No response from bot", "bot");
-    } catch (error) {
-      console.error("Chat Error:", error);
-      // Remove typing indicator
-      chatBox.removeChild(botTyping);
-      showMessage("Let me first build the backend bro!🚀", "bot");
-    } finally {
-      sendbtn.disabled = false;
-    }
-  });
+  initTypeAnimation(); //typing animation at reload
 
   // Logout functionality
    const signOutBtn = document.querySelector(".sign-out");
@@ -83,6 +24,68 @@ document.addEventListener("DOMContentLoaded", () => {
     signOutBtn.addEventListener("click", function() {
       window.location.href = "/logout";
     });
+  }
+
+  //----------------------------------------------------------
+
+ const profile = document.querySelector(".profile");
+ const settings = document.querySelector(".settings");
+
+ profile.addEventListener("click", (event) => {
+   // Toggle settings menu visibility
+   settings.classList.toggle("active");
+
+   // Prevent the click from propagating to the document (to avoid immediate closing)
+   event.stopPropagation();
+ });
+
+ // Hide settings when clicking anywhere outside
+ document.addEventListener("click", (event) => {
+   if (!settings.contains(event.target) && !profile.contains(event.target)) {
+     settings.classList.remove("active");
+   }
+ });
+
+  //----------------------------------------------------------
+
+  //Message send animation
+  async function sendMessage() {
+    let userInput = document.querySelector("#user-input").value;
+    let chatBox = document.querySelector("#chat-box");
+    if (userInput === "") {
+      alert("Write some thing");
+      typingText.style.display = "none";
+    } else {
+      let userMessage = document.createElement("div");
+      userMessage.classList.add("message", "user");
+      userMessage.innerHTML = `<p>${userInput}</p>`;
+      chatBox.appendChild(userMessage);
+      document.querySelector("#user-input").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      typingText.style.display = "none";
+
+      let response = await fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput }),
+      });
+
+      let data = await response.json();
+      let botMessage = document.createElement("div");
+      botMessage.classList.add("message", "bot");
+      botMessage.innerHTML = `<p>${data.replay}</p>`;
+      chatBox.appendChild(botMessage);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  }
+
+  function uploadFile() {
+    let fileInput = document.getElementById("file-input");
+    let file = fileInput.files[0];
+    if (file) {
+      alert("File uploaded: " + file.name);
+    }
   }
 });
 
