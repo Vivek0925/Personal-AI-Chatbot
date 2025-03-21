@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   initTypeAnimation(); //typing animation at reload
 
-  // Logout functionality
+  // --------------------Logout functionality------------
   const logoutBtn = document.querySelector(".logout");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -26,29 +26,69 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //----------------------------------------------------------
+  //Settings popup---------------------------------------
 
- const profile = document.querySelector(".profile");
- const settings = document.querySelector(".settings");
+  const profile = document.querySelector(".profile");
+  const settings = document.querySelector(".settings");
 
- profile.addEventListener("click", (event) => {
-   // Toggle settings menu visibility
-   settings.classList.toggle("active");
+  profile.addEventListener("click", (event) => {
+    // Toggle settings menu visibility
+    settings.classList.toggle("active");
 
-   // Prevent the click from propagating to the document (to avoid immediate closing)
-   event.stopPropagation();
- });
+    // Prevent the click from propagating to the document (to avoid immediate closing)
+    event.stopPropagation();
+  });
 
- // Hide settings when clicking anywhere outside
- document.addEventListener("click", (event) => {
-   if (!settings.contains(event.target) && !profile.contains(event.target)) {
-     settings.classList.remove("active");
-   }
- });
+  // Hide settings when clicking anywhere outside
+  document.addEventListener("click", (event) => {
+    if (!settings.contains(event.target) && !profile.contains(event.target)) {
+      settings.classList.remove("active");
+    }
+  });
 
-  //----------------------------------------------------------
+  //file-uplaod-----------------------------------------
 
-  //Message send animation
+  const fileInput = document.querySelector("#file-input");
+  const textInput = document.querySelector("#text-input");
+  const sendButton = document.querySelector(".send");
+
+  sendButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    if (!fileInput.files.length && !textInput.value.trim()) {
+      alert("Please enter text or select a file.");
+      return;
+    }
+
+    const formData = new FormData();
+    if (fileInput.files.length) {
+      formData.append("file-input", fileInput.files[0]);
+    }
+    if (textInput.value.trim()) {
+      formData.append("text-input", textInput.value.trim());
+    }
+
+    try {
+      const response = await fetch("/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert("Upload Successful!");
+        fileInput.value = "";
+        textInput.value = "";
+      } else {
+        alert("Uplaod failed");
+      }
+    } catch (error) {
+      console.error("Error uploading:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+
+  //Message send animation-------------------------------------
   async function sendMessage() {
     let userInput = document.querySelector("#user-input").value;
     let chatBox = document.querySelector("#chat-box");

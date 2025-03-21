@@ -34,7 +34,7 @@
         />
         <% } else { %>
         <img
-          src="/icons/default-profile.png"
+          src="/icons/profile.png"
           alt="Default profile picture"
           title="<%= user ? user.displayName : 'User' %>"
         />
@@ -71,18 +71,13 @@
     </div>
 
     <div class="footer">
-      <form
-        class="search"
-        enctype="multipart/form-data"
-        action="/upload"
-        method="POST"
-      >
+      <form class="search" enctype="multipart/form-data">
         <input type="file" id="file-input" name="file-input" hidden multiple />
         <label for="file-input" class="upload-label">
           <i class="ri-upload-2-line"></i>
         </label>
-        <input type="text" id="user-input" placeholder="What do you want!" />
-        <button type="submit" class="send">
+        <input type="text" id="text-input" placeholder="What do you want!" />
+        <button class="send">
           <i class="ri-arrow-up-line"></i>
         </button>
       </form>

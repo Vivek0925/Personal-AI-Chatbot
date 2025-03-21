@@ -4,6 +4,8 @@ const session = require("express-session");
 const path = require("path");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const multer = require("multer");
+const axios = require("axios");
+const fs = require("fs");
 require("dotenv").config();
 
 const app = express();
@@ -14,10 +16,9 @@ app.set("views", path.join(__dirname, "views"));
 
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(express.json());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET ,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -97,35 +98,63 @@ app.get("/home", ensureAuthenticated, (req, res) => {
   });
 });
 
-app.post("/upload", upload.any(), (req, res) => {
-  console.log(req.files);
-  console.log(req.body);
-
-  // Check if files exist
-  if (!req.files || req.files.length === 0) {
-    return res.status(400).send("No files uploaded.");
-  }
-
-  // Check maximum files
-  const maxFiles = 5;
-  if (req.files.length > maxFiles) {
-    return res.status(400).send(`Maximum ${maxFiles} files allowed.`);
-  }
-
-  console.log("Upload successful");
-  res.status(200).send("Files uploaded successfully");
-});
-
-app.get("/logout", (req, res) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
+app.post("/upload", upload.any(), async (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No files uploaded." });
     }
-    res.redirect("/");
-  });
+
+    const results = [];
+    for (const file of req.files) {
+      // Convert file to Base64
+      const fileData = fs.readFileSync(file.path).toString("base64");
+
+      // Prepare payload for Gemini API
+      const payload = {
+        instances: [
+          {
+            content: fileData,
+            mimeType: file.mimetype, // Pass the MIME type
+          },
+        ],
+      };
+
+      // Send request to Gemini API
+      const geminiResponse = await axios.post(
+        "https://asia-south1-aiplatform.googleapis.com/v1/projects/pai-chatbot-451105/locations/asia-south1/publishers/google/models/gemini-1.5-pro:generateContent",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer AIzaSyB8yuU4cXypKdMc-_5BLzLqzyBwNQunDg4`, // Use API key
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // Collect response for each file
+      results.push({
+        originalFileName: file.originalname,
+        suggestedFileName:
+          geminiResponse.data.predictions[0].content || "No name suggested",
+      });
+    }
+
+    // Return consolidated results to the frontend
+    res.status(200).json({ success: true, results });
+  } catch (error) {
+    console.error(
+      "Error processing files:",
+      error.response?.data || error.message
+    );
+    res
+      .status(500)
+      .json({ success: false, message: "File processing failed." });
+  }
 });
 
 // Start server
-app.listen(3000, "0.0.0.0", () => {
-  console.log("Server running on port 3000");
+app.listen(3000, () => {
+  console.log(`Server running on http://localhost:3000`);
 });
