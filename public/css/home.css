@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #0f0f0f;
   background-size: 30px 30px;
   background-image: radial-gradient(
@@ -164,9 +164,13 @@ body {
 }
 
 .footer {
-  height: 7vh;
+  height: 8vh;
   margin: auto;
   padding: 0px 20px 0px 20px;
+  position:absolute;
+  top: 87%;
+  width: 100%;
+  /* background-color: #008cff; */
 }
 
 /* Message animation styles */
@@ -311,6 +315,62 @@ input {
 .typing-text {
   transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
 }
+#mainPreviewContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 77%;
+  /* background-color: yellow; */
+}
+.preview-container {
+  display: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(25, 25, 25); */
+  padding: 10px;
+  border-radius: 8px;
+  width: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.preview-container img, .preview-container .file-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.file-info {
+  flex-grow: 1;
+  margin-left: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  word-wrap: break-word;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+}
+.remove-btn {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-left: 0px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.remove-btn:hover {
+  background: darkred;
+}
+
 @media screen and (max-width: 480px) {
   body {
     overflow: hidden;

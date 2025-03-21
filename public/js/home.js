@@ -128,3 +128,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// --- -- - - -- -- - - - - - - - - -- - -
+function displayFile() {
+  const input = document.getElementById('file-input');
+  const fileName = document.getElementById('file-name');
+  const previewContainer = document.getElementById('preview-container');
+  const previewImage = document.getElementById('file-preview');
+  const fileIcon = document.getElementById('file-icon');
+  const removeButton = document.getElementById('remove-btn');
+
+  if (input.files.length > 0) {
+      const file = input.files[0];
+      fileName.textContent = file.name;
+      previewContainer.style.display = 'flex';
+      removeButton.style.display = 'flex'; // Show remove button
+
+      // Check file type
+      if (file.type.startsWith('image/')) {
+          // Show image preview
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              previewImage.src = e.target.result;
+              previewImage.style.display = "block";
+              fileIcon.style.display = "none"; // Hide file icon
+          };
+          reader.readAsDataURL(file);
+      } else {
+          // Show file type icon
+          previewImage.style.display = "none";
+          fileIcon.style.display = "block";
+          fileIcon.src = getFileIcon(file.type);
+      }
+  } else {
+      removeFile(); // Reset everything if no file is chosen
+  }
+}
+
+function removeFile() {
+  const input = document.getElementById('file-input');
+  const fileName = document.getElementById('file-name');
+  const previewContainer = document.getElementById('preview-container');
+  const previewImage = document.getElementById('file-preview');
+  const fileIcon = document.getElementById('file-icon');
+  const removeButton = document.getElementById('remove-btn');
+
+  input.value = ""; // Reset input
+  fileName.textContent = "No file chosen";
+  previewContainer.style.display = 'none'; // Hide preview container
+  previewImage.style.display = "none"; // Hide image preview
+  fileIcon.style.display = "none"; // Hide file icon
+  removeButton.style.display = "none"; // Hide remove button
+}
+
+function getFileIcon(fileType) {
+  // Assign icons based on file type
+  if (fileType.includes("pdf")) return "https://cdn-icons-png.flaticon.com/512/337/337946.png"; // PDF icon
+  if (fileType.includes("audio")) return "https://cdn-icons-png.flaticon.com/512/2305/2305955.png"; // Audio icon
+  if (fileType.includes("video")) return "https://cdn-icons-png.flaticon.com/512/2991/2991100.png"; // Video icon
+  if (fileType.includes("word")) return "https://cdn-icons-png.flaticon.com/512/732/732220.png"; // Word doc icon
+  if (fileType.includes("excel")) return "https://cdn-icons-png.flaticon.com/512/732/732228.png"; // Excel icon
+  if (fileType.includes("text")) return "https://cdn-icons-png.flaticon.com/512/159/159603.png"; // Text file icon
+  return "https://cdn-icons-png.flaticon.com/512/833/833524.png"; // Generic file icon
+}
