@@ -127,7 +127,7 @@ app.post("/upload", upload.any(), async (req, res) => {
         payload,
         {
           headers: {
-            Authorization: `Bearer AIzaSyB8yuU4cXypKdMc-_5BLzLqzyBwNQunDg4`, // Use API key
+            Authorization: `${process.env.GEMINI_API_KEY}`, // Use API key
             "Content-Type": "application/json",
           },
         }
